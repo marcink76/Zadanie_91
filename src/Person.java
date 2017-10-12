@@ -21,7 +21,6 @@ public class Person {
             throw new IncorrectAgeException("Podaj wiek większy od 1");
         } else {
             this.age = age;
-            System.out.println("wiek poprawny");
         }
 
         Pattern pattern = Pattern.compile("[0-9]{11}");
@@ -32,7 +31,6 @@ public class Person {
             throw new IncorrectPeselException("Prosze podać właściwy nr PESEL!");
         } else {
             this.pesel = pesel;
-            System.out.println("PESEL poprawny");
         }
     }
 
