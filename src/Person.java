@@ -10,41 +10,29 @@ public class Person {
     public Person(String name, String lastName, String pesel, int age) throws NameUndefinedException,
             IncorrectAgeException, IncorrectPeselException {
 
-        try {
-            if (name == null || lastName == null || name.length() < 2 || lastName.length() < 2) {
-                throw new NameUndefinedException("Podaj poprawne imie i nazwisko");
-            } else {
-                this.name = name;
-                this.lastName = lastName;
-            }
-        } catch (NameUndefinedException e) {
-            System.out.println("Podaj poprawne nazwisko");
+        if (name == null || lastName == null || name.length() < 2 || lastName.length() < 2) {
+            throw new NameUndefinedException("Podaj poprawne imie i nazwisko");
+        } else {
+            this.name = name;
+            this.lastName = lastName;
         }
 
-        try {
-            if (age < 1) {
-                throw new IncorrectAgeException("Podaj wiek większy od 1");
-            } else {
-                this.age = age;
-                System.out.println("wiek poprawny");
-            }
-        } catch (IncorrectAgeException e) {
-            System.out.println("Podaj poprawny wiek!");
+        if (age < 1) {
+            throw new IncorrectAgeException("Podaj wiek większy od 1");
+        } else {
+            this.age = age;
+            System.out.println("wiek poprawny");
         }
 
         Pattern pattern = Pattern.compile("[0-9]{11}");
         Matcher matcher = pattern.matcher(pesel);
         boolean match = matcher.find();
 
-        try{
-            if (!match) {
-                throw new IncorrectPeselException("Prosze podać właściwy nr PESEL!");
-            } else {
-                this.pesel = pesel;
-                System.out.println("PESEL poprawny");
-            }
-        }catch (IncorrectPeselException e){
-            System.out.println("Podaj poprawny PESEL");
+        if (!match) {
+            throw new IncorrectPeselException("Prosze podać właściwy nr PESEL!");
+        } else {
+            this.pesel = pesel;
+            System.out.println("PESEL poprawny");
         }
     }
 

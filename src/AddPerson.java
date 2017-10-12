@@ -18,8 +18,15 @@ public class AddPerson {
         System.out.println("Podaj PESEL");
         String pesel = scanner.next();
 
-        Person person = new Person(name, lastName, pesel, age);
-
-        System.out.println(person);
+        try {
+            Person person = new Person(name, lastName, pesel, age);
+            System.out.println(person);
+        } catch (NameUndefinedException e) {
+            System.out.println("Złe nazwisko!");
+        } catch (IncorrectAgeException e) {
+            System.out.println("Zły wiek!");
+        } catch (IncorrectPeselException e) {
+            System.out.println("Zły PESEL!");
+        }
     }
 }
